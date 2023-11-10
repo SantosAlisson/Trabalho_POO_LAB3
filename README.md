@@ -1,3 +1,3 @@
-<hl>Gestão de estoque automotivo</hl>
+# Gestão de estoque automotivo
 
 >Status: Developing ⚠️
