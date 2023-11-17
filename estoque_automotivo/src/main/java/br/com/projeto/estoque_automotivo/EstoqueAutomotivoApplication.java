@@ -8,6 +8,8 @@ public class EstoqueAutomotivoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EstoqueAutomotivoApplication.class, args);
+		
+
 	}
 
 }
