@@ -19,12 +19,39 @@ import com.example.crm.model.Veiculo;
 import com.example.crm.repository.VeiculoRepository;
 
 @RestController
-   public class Controle {
+@RequestMapping("/veiculos")
+puclic class ClienteController {
+	
+	@Autowired
+	private VeiculoRepository veiculoRepository;
+	
+	@GetMapping
+	public List <Veiculo> listar() {
+		return veiculoRepository.findAll();
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Veiculo adicionar(@RequestBody Veiculo veiculo) {
+		return veiculoRepository.save(veiculo);
+	}
+	
+	@DeleteMapping
+	public void Deleta(@RequestBody Veiculo veiculo) {
+		veiculoRepository.delete(veiculo);
+	}
+	
+	@PutMapping
+    public ResponseEntity<?> Atualiza(@RequestBody Veiculo veiculo) {
+	    try {
+	        Veiculo veiculoAtualizado = veiculoRepository.save(veiculo);
+	        return ResponseEntity.ok(veiculoAtualizado); 
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar!");
+		}
+	}
+}
    
-      @GetMapping("")    
-      public String mensagem (){
-        return "";
-      }
+     
     
       
-}
